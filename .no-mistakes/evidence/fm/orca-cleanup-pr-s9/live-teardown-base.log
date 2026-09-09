@@ -1,0 +1,75 @@
+==================================================================
+[BASE] CASE valid
+  orca_worktree_id = c668d50f-c307-49b8-bcf5-21f59776d85c::/private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/valid/worktree
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/valid/worktree
+  $ bin/fm-teardown.sh orcacmpvalid
+  | REFUSED: Orca endpoint metadata for task orcacmpvalid is malformed or inconsistent; preserving task state.
+  exit=1 (expected 0)
+  orca CLI calls made by teardown:
+    (none)
+  task metadata: PRESERVED byte-identical
+  worktree dir: still present (fake orca does not delete)
+  RESULT: FAIL
+==================================================================
+[BASE] CASE spaces
+  orca_worktree_id = c668d50f-c307-49b8-bcf5-21f59776d85c::/private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/spaces/worktree with spaces
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/spaces/worktree with spaces
+  $ bin/fm-teardown.sh orcacmpspaces
+  | REFUSED: Orca endpoint metadata for task orcacmpspaces is malformed or inconsistent; preserving task state.
+  exit=1 (expected 0)
+  orca CLI calls made by teardown:
+    (none)
+  task metadata: PRESERVED byte-identical
+  worktree dir: still present (fake orca does not delete)
+  RESULT: FAIL
+==================================================================
+[BASE] CASE mismatch
+  orca_worktree_id = c668d50f-c307-49b8-bcf5-21f59776d85c::/private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/mismatch/worktree/../other
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/mismatch/worktree
+  $ bin/fm-teardown.sh orcacmpmismatch
+  | REFUSED: Orca endpoint metadata for task orcacmpmismatch is malformed or inconsistent; preserving task state.
+  exit=1 (expected 1)
+  orca CLI calls made by teardown:
+    (none)
+  task metadata: PRESERVED byte-identical
+  worktree dir: still present (fake orca does not delete)
+  RESULT: PASS
+==================================================================
+[BASE] CASE badrepo
+  orca_worktree_id = bad/repo::/private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/badrepo/worktree
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/badrepo/worktree
+  $ bin/fm-teardown.sh orcacmpbadrepo
+  | REFUSED: Orca endpoint metadata for task orcacmpbadrepo is malformed or inconsistent; preserving task state.
+  exit=1 (expected 1)
+  orca CLI calls made by teardown:
+    (none)
+  task metadata: PRESERVED byte-identical
+  worktree dir: still present (fake orca does not delete)
+  RESULT: PASS
+==================================================================
+[BASE] CASE relpath
+  orca_worktree_id = c668d50f-c307-49b8-bcf5-21f59776d85c::relative/path
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/relpath/worktree
+  $ bin/fm-teardown.sh orcacmprelpath
+  | REFUSED: Orca endpoint metadata for task orcacmprelpath is malformed or inconsistent; preserving task state.
+  exit=1 (expected 1)
+  orca CLI calls made by teardown:
+    (none)
+  task metadata: PRESERVED byte-identical
+  worktree dir: still present (fake orca does not delete)
+  RESULT: PASS
+==================================================================
+[BASE] CASE legacy
+  orca_worktree_id = wt-opaque-legacy
+  recorded worktree = /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/legacy/worktree
+  $ bin/fm-teardown.sh orcacmplegacy
+  | teardown orcacmplegacy complete (window term_8a1764fd-c65f-4883-bfad-7be2dd4f9661, worktree /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/legacy/worktree)
+  | Backlog: orcacmplegacy just finished (this home keeps no markdown backlog at /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/legacy/data/backlog.md). Update /private/var/folders/_l/5zqsg6cj0p9_g7r7bsf2wh600000gp/T/fm-orca-compound-drive.xHZd1l/legacy/data/backlog.md - move orcacmplegacy to Done, keep Done to the 10 most recent, then re-scan Queued and dispatch only work whose blockers are gone and date is due.
+  exit=0 (expected 0)
+  orca CLI calls made by teardown:
+    orca worktree show --worktree id:wt-opaque-legacy --json
+    orca terminal close --terminal term_8a1764fd-c65f-4883-bfad-7be2dd4f9661 --json
+    orca worktree rm --worktree id:wt-opaque-legacy --force --json
+  task metadata: REMOVED
+  worktree dir: still present (fake orca does not delete)
+  RESULT: PASS

@@ -1,0 +1,4 @@
+Real Orca 1.4.198 `orca worktree list --json` ids for the firstmate repo (read-only query, shows the repo-id::/absolute/path shape):
+   c668d50f-c307-49b8-bcf5-21f59776d85c::/Users/nash/src/firstmate
+   c668d50f-c307-49b8-bcf5-21f59776d85c::/Users/nash/orca/workspaces/firstmate/fm-orca-cleanup-pr-s9
+   c668d50f-c307-49b8-bcf5-21f59776d85c::/Users/nash/orca/workspaces/firstmate/research
